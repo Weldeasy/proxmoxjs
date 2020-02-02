@@ -4,6 +4,8 @@ ProxmoxJS is a Proxmox API client for node.js:
 
 [API Viewer](https://pve.proxmox.com/pve-docs/api-viewer/) | [API Docs](https://pve.proxmox.com/wiki/Proxmox_VE_API)
 
+Based on: [this](https://github.com/ttarvis/node-proxmox)
+
 ## Installation
 
 Use the package manager [npm](https://www.npmjs.com/get-npm) to install proxmoxjs.
