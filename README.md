@@ -108,7 +108,7 @@ proxmox.cluster.acme.account.get('name', (e, r, b) => {/* ... */}) // /cluster/a
 proxmox.cluster.acme.account.put('name', {key:'value'}, (e, r, b) => {/* ... */}) // /cluster/acme/account/{name} [PUT]
 proxmox.cluster.acme.account.delete('name', (e, r, b) => {/* ... */}) // /cluster/acme/account/{name} [DELETE]
 proxmox.cluster.acme.directories.get((err, response, body) => {/* ... */}) // /cluster/acme/directories [GET]
-proxmox.cluster.acme.tos.get((err, response, body) => {/* ... */}) # /cluster/acme/tos [GET]
+proxmox.cluster.acme.tos.get((err, response, body) => {/* ... */}) // /cluster/acme/tos [GET]
 proxmox.cluster.acme.tos.get({key: 'value'}, (err, response, body) => {/* ... */}) // /cluster/acme/tos?key=value [GET]
 
 /* cluster/backup */
