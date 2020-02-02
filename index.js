@@ -335,10 +335,322 @@ module.exports = function (username, password, hostname) {
                     }
                 }
             },
+            config: {
+                get: function (cb) {
+                    get('/cluster/config', {}, cb);
+                },
+                post: function (data, cb) {
+                    post('/cluster/config', data, cb);
+                },
+                nodes: {
+                    get: function (cb) {
+                        get('/cluster/nodes', {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/cluster/config/nodes/'+id, data, cb);
+                    },
+                    delete: function (id, cb) {
+                        deleteRequest('/cluster/config/nodes/' + id, {}, cb);
+                    },
+                },
+                join: {
+                    get: function (cb) {
+                        get('/cluster/config/join', {}, cb);
+                    },
+                    post: function (data, cb) {
+                        post('/cluster/config/join', data, cb);
+                    }
+                },
+                qdevice: {
+                    get: function (cb) {
+                        get('/cluster/config/qdevice', {}, cb);
+                    }
+                },
+                totem: {
+                    get: function (cb) {
+                        get('/cluster/config/totem', {}, cb);
+                    }
+                }
+            },
 
+            firewall: {
+                get: function (cb) {
+                    get('/cluster/firewall', {}, cb);
+                },
+                aliases: {
+                    get: function (param1, param2) {
+                        var cb = param1;
+                        var id = '';
+                        if (param2 && typeof param2 == 'function') {
+                            cb = param2;
+                            id = '/' + param1;
+                        }
+
+                        get('/cluster/firewall/aliases' + id, {}, cb);
+                    },
+                    post: function (data, cb) {
+                        post('/cluster/firewall/aliases', data, cb);
+                    },
+                    put: function (id, data, cb) {
+                        put('/cluster/firewall/aliases/' + id, data, cb);
+                    },
+                    delete: function (id, cb) {
+                        deleteRequest('/cluster/firewall/aliases/' + id, {}, cb);
+                    }
+                },
+                groups: {
+                    get: function (param1, param2, param3) {
+                        var cb = param1;
+                        var id = '';
+                        if (param2 && typeof param2 == 'function') {
+                            cb = param2;
+                            id = '/' + param1;
+                        }
+
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            id = '/' + param1 + '/' + param2;
+                        }
+
+                        get('/cluster/firewall/groups' + id, {}, cb);
+                    },
+                    post: function (param1, param2, param3) {
+                        var cb = param2;
+                        var data = param1;
+                        var id = '';
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            data = param2;
+                            id = '/' + param1;
+                        }
+
+                        post('/cluster/firewall/groups' + id, data, cb);
+                    },
+                    delete: function (param1, param2, param3) {
+                        var cb = param2;
+                        var id = '/' + param1;
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            id = '/' + param1 + '/' + param2;
+                        }
+                        deleteRequest('/cluster/firewall/groups' + id, {}, cb);
+                    },
+                    put: function (group, pos, data, cb) {
+                        put('/cluster/firewall/groups/' + group + '/' + pos, data, cb);
+                    },
+                },
+                ipset: {
+                    get: function (param1, param2, param3) {
+                        var cb = param1;
+                        var id = '';
+                        if (param2 && typeof param2 == 'function') {
+                            cb = param2;
+                            id = '/' + param1;
+                        }
+
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            id = '/' + param1 + '/' + param2;
+                        }
+
+                        get('/cluster/firewall/ipset' + id, {}, cb);
+                    },
+                    post: function (param1, param2, param3) {
+                        var cb = param2;
+                        var data = param1;
+                        var id = '';
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            data = param2;
+                            id = '/' + param1;
+                        }
+
+                        post('/cluster/firewall/ipset' + id, data, cb);
+                    },
+                    delete: function (param1, param2, param3) {
+                        var cb = param2;
+                        var id = '/' + param1;
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            id = '/' + param1 + '/' + param2;
+                        }
+                        deleteRequest('/cluster/firewall/ipset' + id, {}, cb);
+                    },
+                    put: function (group, pos, data, cb) {
+                        put('/cluster/firewall/ipset/' + group + '/' + pos, data, cb);
+                    },
+                },
+                rules: {
+                    get: function (param1, param2) {
+                        var cb = param1;
+                        var id = '';
+                        if (param2 && typeof param2 == 'function') {
+                            cb = param2;
+                            id = '/' + param1;
+                        }
+
+                        get('/cluster/firewall/rules' + id, {}, cb);
+                    },
+                    post: function (data, cb) {
+                        post('/cluster/firewall/rules', data, cb);
+                    },
+                    put: function (id, data, cb) {
+                        put('/cluster/firewall/rules/' + id, data, cb);
+                    },
+                    delete: function (id, cb) {
+                        deleteRequest('/cluster/firewall/rules/' + id, {}, cb);
+                    }
+                },
+                macros: {
+                    get: function (cb) {
+                        get('/cluster/firewall/macros', {}, cb);
+                    }
+                },
+                options: {
+                    get: function (cb) {
+                        get('/cluster/firewall/options', {}, cb);
+                    },
+                    put: function (data, cb) {
+                        put('/cluster/firewall/options', data, cb);
+                    },
+                },
+                refs: {
+                    get: function (param1, param2) {
+                        var data = {};
+                        var cb = param1;
+
+                        if (param2 && typeof param2 == 'function') {
+                            cb = param2;
+                            data = param1;
+                        }
+                        get('/cluster/firewall/refs', data, cb);
+                    }
+                },
+            },
+            ha: {
+                get: function (cb) {
+                    get('/cluster/ha', {}, cb);
+                },
+                groups: {
+                    get: function (param1, param2) {
+                        var cb = param1;
+                        var id = '';
+                        if (param2 && typeof param2 == 'function') {
+                            cb = param2;
+                            id = '/' + param1;
+                        }
+
+                        get('/cluster/ha/groups' + id, {}, cb);
+                    },
+                    post: function (data, cb) {
+                        post('/cluster/ha/groups', data, cb);
+                    },
+                    put: function (id, data, cb) {
+                        put('/cluster/ha/groups/' + id, data, cb);
+                    },
+                    delete: function (id, cb) {
+                        deleteRequest('/cluster/ha/groups/' + id, {}, cb);
+                    }
+                },
+                resources: {
+                    get: function (param1, param2) {
+                        var cb = param1;
+                        var id = '';
+                        if (param2 && typeof param2 == 'function') {
+                            cb = param2;
+                            id = '/' + param1;
+                        }
+
+                        get('/cluster/ha/resources' + id, {}, cb);
+                    },
+                    post: function (data, cb) {
+                        post('/cluster/ha/resources', data, cb);
+                    },
+                    put: function (id, data, cb) {
+                        put('/cluster/ha/resources/' + id, data, cb);
+                    },
+                    delete: function (id, cb) {
+                        deleteRequest('/cluster/ha/resources/' + id, {}, cb);
+                    },
+                    migrate: {
+                        post: function(id, data, cb) {
+                            post('/cluster/ha/resources/' + id + '/migrate', data, cb);
+                        }
+                    },
+                    relocate: {
+                        post: function(id, data, cb) {
+                            post('/cluster/ha/resources/' + id + '/relocate', data, cb);
+                        }
+                    }
+                },
+                status: {
+                    get: function(cb) {
+                        get('/cluster/ha/status', {}, cb);
+                    },
+                    current: {
+                        get: function(cb) {
+                            get('/cluster/ha/status/current', {}, cb);
+                        },
+                    },
+                    manager_status: {
+                        get: function(cb) {
+                            get('/cluster/ha/status/manager_status', {}, cb);
+                        },
+                    }
+                }
+            },
+            replication: {
+                get: function (param1, param2) {
+                    var cb = param1;
+                    var id = '';
+                    if (param2 && typeof param2 == 'function') {
+                        cb = param2;
+                        id = '/' + param1;
+                    }
+
+                    get('/cluster/replication' + id, {}, cb);
+                },
+                post: function (data, cb) {
+                    post('/cluster/replication', data, cb);
+                },
+                put: function (id, data, cb) {
+                    put('/cluster/replication/' + id, data, cb);
+                },
+                delete: function (id, cb) {
+                    deleteRequest('/cluster/replication/' + id, {}, cb);
+                },
+            },
+            log: {
+                get: function (data, cb) {
+                    get('/cluster/log', data, cb);
+                },
+            },
+            nextid: {
+                get: function (data, cb) {
+                    get('/cluster/nextid', data, cb);
+                },
+            },
+            options: {
+                get: function (cb) {
+                    get('/cluster/options', {}, cb);
+                },
+                put: function (data, cb) {
+                    put('/cluster/options', data, cb);
+                }
+            },
+            resources: {
+                get: function (data, cb) {
+                    get('/cluster/resources', data, cb);
+                },
+            },
             status: {
                 get: function (cb) {
                     get('/cluster/status', {}, cb);
+                },
+            },
+            tasks: {
+                get: function (cb) {
+                    get('/cluster/tasks', {}, cb);
                 },
             },
         },
