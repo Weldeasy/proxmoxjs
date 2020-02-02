@@ -1,7 +1,7 @@
 {
   "name": "proxmoxjs",
-  "version": "0.0.3",
-  "description": "Proxmox API client for node",
+  "version": "0.0.4",
+  "description": "Proxmox API client for node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

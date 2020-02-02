@@ -2,7 +2,7 @@ const request = require('request');
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
-exports = function (username, password, hostname) {
+module.exports = function (username, password, hostname) {
 
     var apiURLRoot = 'https://' + hostname + ':8006/';
     var apiURL = apiURLRoot + 'api2/json';
