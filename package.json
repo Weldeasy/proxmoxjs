@@ -1,0 +1,28 @@
+{
+  "name": "proxmoxjs",
+  "version": "0.0.2",
+  "description": "Proxmox API client for node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weldeasy/proxmoxjs.git"
+  },
+  "keywords": [
+    "proxmox",
+    "api",
+    "client",
+    "node"
+  ],
+  "author": "Óscar Marcos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Weldeasy/proxmoxjs/issues"
+  },
+  "homepage": "https://github.com/Weldeasy/proxmoxjs#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
