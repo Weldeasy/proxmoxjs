@@ -54,7 +54,7 @@ exports.method = function (req, res) {
 ## Methods
 ```js
 /* access */
-proxmox.access.get((err, response, body) => {/* ... */}) # /access [GET]
+proxmox.access.get((err, response, body) => {/* ... */}) // /access [GET]
 
 /* access/domains */
 proxmox.access.domains.get((e, r, b) => {/* ... */}) // /access/domains [GET]
@@ -98,37 +98,37 @@ proxmox.access.tfa.put({key:'value'}, (e, r, b) => {/* ... */}) // /access/tfa [
 
 
 /* cluster */
-proxmox.cluster.get((err, response, body) => {/* ... */}) # /cluster [GET]
+proxmox.cluster.get((err, response, body) => {/* ... */}) // /cluster [GET]
 
 /* cluster/acme */
-proxmox.cluster.acme.get((err, response, body) => {/* ... */}) # /cluster/acme [GET]
-proxmox.cluster.acme.account.get((err, response, body) => {/* ... */}) # /cluster/acme/account [GET]
+proxmox.cluster.acme.get((err, response, body) => {/* ... */}) // /cluster/acme [GET]
+proxmox.cluster.acme.account.get((err, response, body) => {/* ... */}) // /cluster/acme/account [GET]
 proxmox.cluster.acme.account.post({key:'value'}, (e, r, b) => {/* ... */}) // /cluster/acme/account [POST]
 proxmox.cluster.acme.account.get('name', (e, r, b) => {/* ... */}) // /cluster/acme/account/{name} [GET]
 proxmox.cluster.acme.account.put('name', {key:'value'}, (e, r, b) => {/* ... */}) // /cluster/acme/account/{name} [PUT]
 proxmox.cluster.acme.account.delete('name', (e, r, b) => {/* ... */}) // /cluster/acme/account/{name} [DELETE]
-proxmox.cluster.acme.directories.get((err, response, body) => {/* ... */}) # /cluster/acme/directories [GET]
+proxmox.cluster.acme.directories.get((err, response, body) => {/* ... */}) // /cluster/acme/directories [GET]
 proxmox.cluster.acme.tos.get((err, response, body) => {/* ... */}) # /cluster/acme/tos [GET]
-proxmox.cluster.acme.tos.get({key: 'value'}, (err, response, body) => {/* ... */}) # /cluster/acme/tos?key=value [GET]
+proxmox.cluster.acme.tos.get({key: 'value'}, (err, response, body) => {/* ... */}) // /cluster/acme/tos?key=value [GET]
 
 /* cluster/backup */
-proxmox.cluster.backup.get((err, response, body) => {/* ... */}) # /cluster/backup [GET]
+proxmox.cluster.backup.get((err, response, body) => {/* ... */}) // /cluster/backup [GET]
 proxmox.cluster.backup.post({key:'value'}, (e, r, b) => {/* ... */}) // /cluster/backup [POST]
 proxmox.cluster.backup.get('id', (e, r, b) => {/* ... */}) // /cluster/backup/{id} [GET]
 proxmox.cluster.backup.put('id', {key:'value'}, (e, r, b) => {/* ... */}) // /cluster/backup/{id} [PUT]
 proxmox.cluster.backup.delete('id', (e, r, b) => {/* ... */}) // /cluster/backup/{id} [DELETE]
 
 /* cluster/ceph */
-proxmox.cluster.ceph.get((err, response, body) => {/* ... */}) # /cluster/ceph [GET]
-proxmox.cluster.ceph.flags.get((err, response, body) => {/* ... */}) # /cluster/ceph/flags [GET]
+proxmox.cluster.ceph.get((err, response, body) => {/* ... */}) // /cluster/ceph [GET]
+proxmox.cluster.ceph.flags.get((err, response, body) => {/* ... */}) // /cluster/ceph/flags [GET]
 proxmox.cluster.ceph.flags.put({key:'value'}, (e, r, b) => {/* ... */}) // /cluster/ceph/flags [PUT]
 proxmox.cluster.backup.get('flag', (e, r, b) => {/* ... */}) // /cluster/ceph/flags/{flag} [GET]
 proxmox.cluster.ceph.flags.put('flag', {key:'value'}, (e, r, b) => {/* ... */}) // /cluster/ceph/flags/{flag} [PUT]
-proxmox.cluster.ceph.metadata.get((err, response, body) => {/* ... */}) # /cluster/ceph/metadata [GET]
-proxmox.cluster.ceph.status.get((err, response, body) => {/* ... */}) # /cluster/ceph/status [GET]
+proxmox.cluster.ceph.metadata.get((err, response, body) => {/* ... */}) // /cluster/ceph/metadata [GET]
+proxmox.cluster.ceph.status.get((err, response, body) => {/* ... */}) // /cluster/ceph/status [GET]
 
 /* cluster/status */
-proxmox.cluster.status.get((err, response, body) => {/* ... */}) # /cluster/status [GET]
+proxmox.cluster.status.get((err, response, body) => {/* ... */}) // /cluster/status [GET]
 
 ```
 
