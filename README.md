@@ -214,6 +214,82 @@ proxmox.cluster.status.get((e, r, b) => {/* ... */}) // /cluster/status [GET]
 /* cluster/status */
 proxmox.cluster.tasks.get((e, r, b) => {/* ... */}) // /cluster/tasks [GET]
 
+
+/* nodes */
+proxmox.nodes.get((e, r, b) => {/* ... */}) // /nodes [GET]
+proxmox.nodes.get('node', (e, r, b) => {/* ... */}) // /nodes/{node} [GET]
+
+/* nodes/{node}/apt */
+proxmox.nodes.apt.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/apt [GET]
+proxmox.nodes.apt.changelog.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/apt/changelog [GET]
+proxmox.nodes.apt.changelog.get('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/apt/changelog?params [GET]
+proxmox.nodes.apt.update.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/apt/update [GET]
+proxmox.nodes.apt.update.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/apt/update [POST]
+proxmox.nodes.apt.versions.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/apt/versions [GET]
+
+/* nodes/{node}/ceph */
+proxmox.nodes.ceph.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph [GET]
+proxmox.nodes.ceph.flags.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/flags [GET]
+proxmox.nodes.ceph.flags.post('node', 'flag', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/flags/{flag} [POST]
+proxmox.nodes.ceph.flags.delete('node', 'flag', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/flags/{flag} [DELETE]
+proxmox.nodes.ceph.fs.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/fs [GET]
+proxmox.nodes.ceph.fs.post('node', 'name', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/fs/{name} [POST]
+proxmox.nodes.ceph.mds.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mds [GET]
+proxmox.nodes.ceph.mds.post('node', 'name', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mds/{name} [POST]
+proxmox.nodes.ceph.mds.delete('node', 'name', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mds/{name} [DELETE]
+proxmox.nodes.ceph.mgr.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mgr [GET]
+proxmox.nodes.ceph.mgr.post('node', 'id', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mgr/{id} [POST]
+proxmox.nodes.ceph.mgr.delete('node', 'id', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mgr/{id} [DELETE]
+proxmox.nodes.ceph.mon.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mon [GET]
+proxmox.nodes.ceph.mon.post('node', 'monid', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mon/{monid} [POST]
+proxmox.nodes.ceph.mon.delete('node', 'monid', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/mon/{monid} [DELETE]
+proxmox.nodes.ceph.osd.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/osd [GET]
+proxmox.nodes.ceph.osd.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/osd [POST]
+proxmox.nodes.ceph.osd.delete('node', 'osdid', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/osd/{osdid} [DELETE]
+proxmox.nodes.ceph.osd.in.post('node', 'osdid', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/osd/{osdid}/in [POST]
+proxmox.nodes.ceph.osd.out.post('node', 'osdid', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/osd/{osdid}/out [POST]
+proxmox.nodes.ceph.osd.scrub.post('node', 'osdid', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/osd/{osdid}/scrub [POST]
+proxmox.nodes.ceph.pools.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/pools [GET]
+proxmox.nodes.ceph.pools.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/pools [POST]
+proxmox.nodes.ceph.pools.delete('node', 'name', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/pools/{name} [DELETE]
+proxmox.nodes.ceph.config.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/config [GET]
+proxmox.nodes.ceph.configdb.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/configdb [GET]
+proxmox.nodes.ceph.crush.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/crush [GET]
+proxmox.nodes.ceph.disks.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/disks [GET]
+proxmox.nodes.ceph.init.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/init [POST]
+proxmox.nodes.ceph.log.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/log [GET]
+proxmox.nodes.ceph.restart.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/restart [POST]
+proxmox.nodes.ceph.rules.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/rules [GET]
+proxmox.nodes.ceph.start.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/start [POST]
+proxmox.nodes.ceph.status.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/status [GET]
+proxmox.nodes.ceph.stop.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/ceph/stop [POST]
+
+/* nodes/{node}/certificates */
+proxmox.nodes.certificates.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/certificates [GET]
+proxmox.nodes.certificates.acme.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/certificates/acme [GET]
+proxmox.nodes.certificates.acme.certificate.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/certificates/acme/certificate [POST]
+proxmox.nodes.certificates.acme.certificate.put('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/certificates/acme/certificate [PUT]
+proxmox.nodes.certificates.acme.certificate.delete('node', (e, r, b) => {/* ... */}) // /nodes/{node}/certificates/acme/certificate [DELETE]
+proxmox.nodes.certificates.custom.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/certificates/custom [POST]
+proxmox.nodes.certificates.custom.delete('node', (e, r, b) => {/* ... */}) // /nodes/{node}/certificates/custom [DELETE]
+proxmox.nodes.certificates.info.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/certificates/info [GET]
+
+/* nodes/{node}/disks */
+proxmox.nodes.disks.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/disks [GET]
+proxmox.nodes.disks.zfs.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/disks/zfs [GET]
+proxmox.nodes.disks.zfs.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/disks/zfs [POST]
+proxmox.nodes.disks.zfs.get('node', 'name', (e, r, b) => {/* ... */}) // /nodes/{node}/disks/zfs/{name} [GET]
+proxmox.nodes.disks.directory.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/disks/directory [GET]
+proxmox.nodes.disks.directory.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/disks/directory [POST]
+proxmox.nodes.disks.initgpt.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/disks/initgpt [POST]
+proxmox.nodes.disks.list.get('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/disks/list?params.. [GET]
+proxmox.nodes.disks.lvm.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/disks/lvm [GET]
+proxmox.nodes.disks.lvm.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/disks/lvm [POST]
+proxmox.nodes.disks.lvmthin.get('node', (e, r, b) => {/* ... */}) // /nodes/{node}/disks/lvmthin [GET]
+proxmox.nodes.disks.lvmthin.post('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/disks/lvmthin [POST]
+proxmox.nodes.disks.smart.get('node', {key:'value'}, (e, r, b) => {/* ... */}) // /nodes/{node}/disks/smart?params.. [GET]
+
+
 ```
 
 ## Contributing

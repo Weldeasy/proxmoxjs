@@ -347,7 +347,7 @@ module.exports = function (username, password, hostname) {
                         get('/cluster/nodes', {}, cb);
                     },
                     post: function (id, data, cb) {
-                        post('/cluster/config/nodes/'+id, data, cb);
+                        post('/cluster/config/nodes/' + id, data, cb);
                     },
                     delete: function (id, cb) {
                         deleteRequest('/cluster/config/nodes/' + id, {}, cb);
@@ -573,27 +573,27 @@ module.exports = function (username, password, hostname) {
                         deleteRequest('/cluster/ha/resources/' + id, {}, cb);
                     },
                     migrate: {
-                        post: function(id, data, cb) {
+                        post: function (id, data, cb) {
                             post('/cluster/ha/resources/' + id + '/migrate', data, cb);
                         }
                     },
                     relocate: {
-                        post: function(id, data, cb) {
+                        post: function (id, data, cb) {
                             post('/cluster/ha/resources/' + id + '/relocate', data, cb);
                         }
                     }
                 },
                 status: {
-                    get: function(cb) {
+                    get: function (cb) {
                         get('/cluster/ha/status', {}, cb);
                     },
                     current: {
-                        get: function(cb) {
+                        get: function (cb) {
                             get('/cluster/ha/status/current', {}, cb);
                         },
                     },
                     manager_status: {
-                        get: function(cb) {
+                        get: function (cb) {
                             get('/cluster/ha/status/manager_status', {}, cb);
                         },
                     }
@@ -654,5 +654,291 @@ module.exports = function (username, password, hostname) {
                 },
             },
         },
+        nodes: {
+            get: function (param1, param2) {
+                var cb = param1;
+                var id = '';
+                if (param2 && typeof param2 == 'function') {
+                    cb = param2;
+                    id = '/' + param1;
+                }
+                get('/nodes' + id, {}, cb);
+            },
+            apt: {
+                get: function (id, cb) {
+                    get('/nodes/' + id + '/apt', {}, cb);
+                },
+                changelog: {
+                    get: function (param1, param2, param3) {
+                        var id = param1;
+                        var cb = param2;
+                        var data = {};
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            data = param2;
+                        }
+
+                        get('/nodes/' + id + '/apt/changelog', data, cb);
+                    }
+                },
+                update: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/apt/update', {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/apt/update', data, cb);
+                    }
+                },
+                versions: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/apt/versions', {}, cb);
+                    }
+                }
+            },
+            ceph: {
+                get: function (id, cb) {
+                    get('/nodes/' + id + '/ceph', {}, cb);
+                },
+                flags: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/flags', {}, cb);
+                    },
+                    post: function (id, flag, data, cb) {
+                        post('/nodes/' + id + '/ceph/flags/' + flag, data, cb);
+                    },
+                    delete: function (id, flag, cb) {
+                        deleteRequest('/nodes/' + id + '/ceph/flags/' + flag, {}, cb);
+                    }
+                },
+                fs: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/fs', {}, cb);
+                    },
+                    post: function (id, fs, data, cb) {
+                        post('/nodes/' + id + '/ceph/fs/' + fs, data, cb);
+                    }
+                },
+                mds: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/mds', {}, cb);
+                    },
+                    post: function (id, mds, data, cb) {
+                        post('/nodes/' + id + '/ceph/mds/' + mds, data, cb);
+                    },
+                    delete: function (id, mds, cb) {
+                        deleteRequest('/nodes/' + id + '/ceph/mds/' + mds, {}, cb);
+                    }
+                },
+                mgr: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/mgr', {}, cb);
+                    },
+                    post: function (id, mgr, data, cb) {
+                        post('/nodes/' + id + '/ceph/mgr/' + mgr, data, cb);
+                    },
+                    delete: function (id, mgr, cb) {
+                        deleteRequest('/nodes/' + id + '/ceph/mgr/' + mgr, {}, cb);
+                    }
+                },
+                mon: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/mon', {}, cb);
+                    },
+                    post: function (id, mon, data, cb) {
+                        post('/nodes/' + id + '/ceph/mon/' + mon, data, cb);
+                    },
+                    delete: function (id, mon, cb) {
+                        deleteRequest('/nodes/' + id + '/ceph/mon/' + mon, {}, cb);
+                    }
+                },
+                osd: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/osd', {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/ceph/osd', data, cb);
+                    },
+                    delete: function (id, osd, cb) {
+                        deleteRequest('/nodes/' + id + '/ceph/osd/' + osd, {}, cb);
+                    },
+                    in: {
+                        post: function (id, osdid, data, cb) {
+                            post('/nodes/' + id + '/ceph/osd/' + osdid + '/in', data, cb);
+                        }
+                    },
+                    out: {
+                        post: function (id, osdid, data, cb) {
+                            post('/nodes/' + id + '/ceph/osd/' + osdid + '/out', data, cb);
+                        }
+                    },
+                    scrub: {
+                        post: function (id, osdid, data, cb) {
+                            post('/nodes/' + id + '/ceph/osd/' + osdid + '/scrub', data, cb);
+                        }
+                    }
+                },
+                pools: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/pools', {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/ceph/pools', data, cb);
+                    },
+                    delete: function (id, name, cb) {
+                        deleteRequest('/nodes/' + id + '/ceph/pools/' + name, {}, cb);
+                    }
+                },
+                config: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/config', {}, cb);
+                    }
+                },
+                configdb: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/configdb', {}, cb);
+                    }
+                },
+                crush: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/crush', {}, cb);
+                    }
+                },
+                disks: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/disks', {}, cb);
+                    }
+                },
+                init: {
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/ceph/init', data, cb);
+                    },
+                },
+                log: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/log', {}, cb);
+                    }
+                },
+                restart: {
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/ceph/restart', data, cb);
+                    },
+                },
+                rules: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/rules', {}, cb);
+                    }
+                },
+                start: {
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/ceph/start', data, cb);
+                    },
+                },
+                status: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/ceph/status', {}, cb);
+                    }
+                },
+                stop: {
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/ceph/stop', data, cb);
+                    },
+                },
+            },
+            certificates: {
+                get: function (id, cb) {
+                    get('/nodes/' + id + '/certificates', {}, cb);
+                },
+                acme: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/certificates/acme', {}, cb);
+                    },
+                    certificate: {
+                        post: function (id, data, cb) {
+                            post('/nodes/' + id + '/certificates/acme/certificate', data, cb);
+                        },
+                        put: function (id, data, cb) {
+                            put('/nodes/' + id + '/certificates/acme/certificate', data, cb);
+                        },
+                        delete: function (id, cb) {
+                            deleteRequest('/nodes/' + id + '/certificates/acme/certificate', {}, cb);
+                        }
+                    }
+                },
+                custom: {
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/certificates/custom', data, cb);
+                    },
+                    delete: function (id, cb) {
+                        deleteRequest('/nodes/' + id + '/certificates/custom', {}, cb);
+                    }
+                },
+                info: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/certificates/info', {}, cb);
+                    },
+                }
+            },
+            disks: {
+                get: function (id, cb) {
+                    get('/nodes/' + id + '/disks', {}, cb);
+                },
+                zfs: {
+                    get: function (param1, param2, param3) {
+                        var id = param1;
+                        var cb = param2;
+                        var name = '';
+                        if (param3 && typeof param3 == 'function') {
+                            cb = param3;
+                            name = '/' + param2;
+                        }
+                        get('/nodes/' + id + '/disks/zfs' + name, {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/disks/zfs', data, cb);
+                    }
+                },
+                directory: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/disks/directory', {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/disks/directory', data, cb);
+                    }
+                },
+                initgpt: {
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/disks/initgpt', data, cb);
+                    }
+                },
+                list: {
+                    get: function (id, data, cb) {
+                        get('/nodes/' + id + '/disks/list', data, cb);
+                    }
+                },
+                lvm: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/disks/lvm', {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/disks/lvm', data, cb);
+                    }
+                },
+                lvmthin: {
+                    get: function (id, cb) {
+                        get('/nodes/' + id + '/disks/lvmthin', {}, cb);
+                    },
+                    post: function (id, data, cb) {
+                        post('/nodes/' + id + '/disks/lvmthin', data, cb);
+                    }
+                },
+                smart: {
+                    get: function (id, data, cb) {
+                        get('/nodes/' + id + '/disks/smart', data, cb);
+                    }
+                },
+            }
+
+
+        }
     };
 }
